@@ -1,0 +1,15 @@
+.layout {
+  height: 100%;
+
+  &[theme="dark"] {
+    * {
+      color: #fff;
+    }
+  }
+
+  &[theme="light"] {
+    * {
+      color: #000;
+    }
+  }
+}

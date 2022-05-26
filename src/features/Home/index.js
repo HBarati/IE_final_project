@@ -1,9 +1,3 @@
-import React from 'react';
-
-const Home = () => {
-  return <div>Home</div>;
-};
-
-Home.propTypes = {};
+import Home from './Home';
 
 export default Home;

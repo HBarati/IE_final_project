@@ -20,7 +20,7 @@ const themeSlice = createSlice({
 export const { toggle } = themeSlice.actions;
 
 const store = configureStore({
-  reducer: themeSlice.reducer
+  reducer: { theme: themeSlice.reducer }
 });
 
 export default store;
