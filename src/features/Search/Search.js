@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 import { nFormatter, numberWithCommas } from '../../utils/number';
 import { useNavigate } from 'react-router-dom';
+import { setLastSearches } from '../../utils/localStorage';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -21,7 +22,10 @@ const Search = () => {
         )
           .then((response) => resolve(response.json()))
           .catch((error) => reject(error))
-      )
+      ),
+    {
+      onSuccess: (response) => setLastSearches(response)
+    }
   );
 
   const navigateToDetail = (id) => () => navigate(`/detail/${id}`);
