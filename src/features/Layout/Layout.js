@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Layout.scss';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as themeAction from '../../store/theme';
 
 const Layout = ({ children, header }) => {
@@ -13,7 +14,7 @@ const Layout = ({ children, header }) => {
     <div className="layout" theme={theme}>
       {header && (
         <header theme={theme}>
-          <h1>IE Final Project</h1>
+          <Link to="/">IE Final Project</Link>
           <button onClick={toggle}>Change Theme</button>
         </header>
       )}
