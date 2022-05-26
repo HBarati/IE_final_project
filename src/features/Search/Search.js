@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { nFormatter, numberWithCommas } from '../../utils/number';
 import { useNavigate } from 'react-router-dom';
 import { setLastSearches } from '../../utils/localStorage';
+import { getFetch } from '../../utils/fetch';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -14,14 +15,9 @@ const Search = () => {
   const { data = [] } = useQuery(
     ['search-market', ids],
     () =>
-      new Promise((resolve, reject) =>
-        fetch(
-          'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&ids=' +
-            ids,
-          { method: 'GET' }
-        )
-          .then((response) => resolve(response.json()))
-          .catch((error) => reject(error))
+      getFetch(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&ids=' +
+          ids
       ),
     {
       onSuccess: (response) => setLastSearches(response)
