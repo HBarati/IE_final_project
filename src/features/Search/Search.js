@@ -20,7 +20,7 @@ const Search = () => {
           ids
       ),
     {
-      onSuccess: (response) => setLastSearches(response)
+      onSuccess: (response) => ids && setLastSearches(response)
     }
   );
 
