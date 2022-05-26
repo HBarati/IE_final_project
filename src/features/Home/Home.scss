@@ -1,8 +1,11 @@
+@import "../../style/variables";
+
 .container {
     height: 100%;
     background-size: cover;
     display: flex;
     flex-direction: row;
+    position: relative;
 
     &[theme="dark"] {
         background-image: url("../../assets/background-dark.png");
@@ -10,6 +13,31 @@
 
     &[theme="light"] {
         background-image: url("../../assets/background-light.jpg");
+    }
+
+    > header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem;
+
+        > button {
+            border: #fff solid;
+            background: transparent;
+            padding: 0.5rem;
+            border-radius: 30px;
+
+            &[theme="dark"] {
+                border: #fff solid;
+            }
+
+            &[theme="light"] {
+                border: #000 solid;
+            }
+        }
     }
 
     > div {
@@ -21,16 +49,25 @@
         padding: 10rem 9rem;
 
         > h1 {
-            font-size: 5rem;
+            font-size: 4rem;
 
             > .crypto {
-                font-size: 4rem;
-                color: #E27C00;
+                font-size: 3rem;
+                color: $primary;
             }
         }
 
-        > p {
-            margin-bottom: 10px;
+        > *:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        > a {
+            background: $primary;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
         }
     }
 }
