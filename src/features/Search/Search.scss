@@ -1,0 +1,93 @@
+@import "../../style/variables";
+
+.search {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../assets/banner.jpg");
+  height: 100%;
+
+  > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    > h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    > a {
+      font-size: 0.6rem;
+    }
+  }
+
+  > main {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    padding: 0 7rem;
+
+    > header {
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    > input {
+      background: transparent;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+
+      &[theme="dark"] {
+        border: 1px solid #666;
+      }
+
+      &[theme="light"] {
+        border: 1px solid #888;
+      }
+    }
+
+    > table {
+      border-spacing: 0;
+      overflow: hidden;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      > thead {
+        background: $secondary;
+
+        > tr {
+          display: flex;
+
+          > th {
+            flex: 1;
+            color: #000 !important;
+            padding: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+
+            &:first-child {
+              text-align: left;
+            }
+
+            &:not(:first-child) {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+
+    &[theme="dark"] {
+      background: #222;
+    }
+
+    &[theme="light"] {
+      background: #ddd;
+    }
+  }
+}

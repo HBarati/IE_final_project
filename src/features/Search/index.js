@@ -1,9 +1,3 @@
-import React from 'react';
-
-const Search = () => {
-  return <div></div>;
-};
-
-Search.propTypes = {};
+import Search from './Search';
 
 export default Search;

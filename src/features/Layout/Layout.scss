@@ -1,5 +1,10 @@
+@import "../../style/variables";
+
 .layout {
   height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 
   &[theme="dark"] {
     * {
@@ -11,5 +16,40 @@
     * {
       color: #000;
     }
+  }
+
+  > header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+
+    > h1 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    > button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    &[theme="dark"] {
+      background: #222;
+      > * {
+        color: $secondary !important;
+      }
+    }
+
+    &[theme="light"] {
+      background: #ddd;
+      > * {
+        color: #000 !important;
+      }
+    }
+  }
+
+  > div {
+    height: 100%;
   }
 }

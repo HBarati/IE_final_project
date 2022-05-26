@@ -9,9 +9,10 @@ const Home = () => {
   const theme = useSelector((state) => state.theme.value);
   const dispatch = useDispatch();
   const toggle = () => dispatch(themeAction.toggle());
+
   return (
     <Layout>
-      <div className="container" theme={theme}>
+      <div className="home" theme={theme}>
         <header>
           <button onClick={toggle} theme={theme}>
             Change Theme
