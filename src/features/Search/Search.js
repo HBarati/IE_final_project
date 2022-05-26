@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Layout from '../Layout';
 import './Search.scss';
 import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 import { nFormatter, numberWithCommas } from '../../utils/number';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
+  const navigate = useNavigate();
   const theme = useSelector((state) => state.theme.value);
   const [ids, setIds] = useState('');
   const { data = [] } = useQuery(
@@ -21,9 +23,9 @@ const Search = () => {
           .catch((error) => reject(error))
       )
   );
-  useEffect(() => {
-    console.log('mohammad', data);
-  }, [data]);
+
+  const navigateToDetail = (id) => () => navigate(`/detail/${id}`);
+
   return (
     <Layout header>
       <div className="search">
@@ -51,7 +53,7 @@ const Search = () => {
             </thead>
             <tbody>
               {data.map((coin) => (
-                <tr key={coin.symbol}>
+                <tr key={coin.symbol} theme={theme} onClick={navigateToDetail(coin.name)}>
                   <td className="data-name">
                     <img src={coin.image} alt={coin.name} />
                     <div>
