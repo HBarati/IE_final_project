@@ -1,0 +1,30 @@
+@import "../../style/variables";
+
+.detail {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 3rem;
+
+  > * {
+    margin-bottom: 1rem;
+  }
+
+  > p {
+    font-weight: bold;
+
+    > span {
+      font-weight: normal;
+    }
+  }
+
+  &[theme="dark"] {
+    background: #252525;
+  }
+
+  &[theme="light"] {
+    background: #cfcfcf;
+  }
+}

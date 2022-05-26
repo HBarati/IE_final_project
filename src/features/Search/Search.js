@@ -24,7 +24,7 @@ const Search = () => {
     }
   );
 
-  const navigateToDetail = (id) => () => navigate(`/detail/${id}`);
+  const navigateToDetail = (id) => () => navigate(`/detail/${id.toLowerCase()}`);
 
   return (
     <Layout header>

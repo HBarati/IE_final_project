@@ -1,9 +1,3 @@
-import React from 'react';
-
-const Detail = () => {
-  return <div></div>;
-};
-
-Detail.propTypes = {};
+import Detail from './Detail';
 
 export default Detail;
