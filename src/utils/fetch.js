@@ -4,3 +4,10 @@ export const getFetch = (url) =>
       .then((response) => resolve(response.json()))
       .catch((error) => reject(error))
   );
+
+export const postFetch = (url, body) =>
+  new Promise((resolve, reject) =>
+    fetch(url, { method: 'POST', body })
+      .then((response) => resolve(response.json()))
+      .catch((error) => reject(error))
+  );

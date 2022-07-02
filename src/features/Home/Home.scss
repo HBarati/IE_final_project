@@ -7,14 +7,6 @@
     flex-direction: row;
     position: relative;
 
-    &[theme="dark"] {
-        background-image: url("../../assets/background-dark.png");
-    }
-
-    &[theme="light"] {
-        background-image: url("../../assets/background-light.jpg");
-    }
-
     > header {
         position: absolute;
         top: 0;

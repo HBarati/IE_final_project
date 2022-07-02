@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Home, Search, Detail } from './features';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Home, Search, Detail, Login } from './features';
 
 const App = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
+    <Route path="/" element={<Navigate to="/login" />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/login" element={<Login />} />
     <Route path="/search" element={<Search />} />
     <Route path="/detail/:id" element={<Detail />} />
   </Routes>

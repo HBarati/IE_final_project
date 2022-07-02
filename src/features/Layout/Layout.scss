@@ -6,13 +6,21 @@
   flex: 1;
   flex-direction: column;
 
+  * {
+    box-sizing: border-box;
+  }
+
   &[theme="dark"] {
+    background: #775454;
+
     * {
       color: #fff;
     }
   }
 
   &[theme="light"] {
+    background: #fdd;
+
     * {
       color: #000;
     }
@@ -22,7 +30,6 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 4rem;
-    box-shadow: 0 6px 5px 0 #ccc;
 
     > a {
       text-decoration: none;
@@ -37,14 +44,18 @@
     }
 
     &[theme="dark"] {
-      background: #222;
+      background: #522;
+      box-shadow: 0 6px 5px 0 #544;
+
       > * {
         color: $secondary !important;
       }
     }
 
     &[theme="light"] {
-      background: #ddd;
+      background: #f55;
+      box-shadow: 0 6px 5px 0 #755;
+
       > * {
         color: #000 !important;
       }

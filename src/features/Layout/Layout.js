@@ -14,7 +14,7 @@ const Layout = ({ children, header }) => {
     <div className="layout" theme={theme}>
       {header && (
         <header theme={theme}>
-          <Link to="/">IE Final Project</Link>
+          <Link to="/">Torob Project</Link>
           <button onClick={toggle}>Change Theme</button>
         </header>
       )}
