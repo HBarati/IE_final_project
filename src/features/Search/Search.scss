@@ -3,7 +3,6 @@
 .search {
   display: flex;
   flex-direction: column;
-  background-image: url("../../assets/banner.jpg");
   height: 100%;
 
   > header {
@@ -15,13 +14,17 @@
 
     > h1 {
       font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #fff !important;
+      margin-bottom: 2rem;
+
+      > img {
+        height: 3.5rem;
+        width: 3.5rem;
+        margin-right: 1rem;
+      }
     }
 
     > a {
-      font-size: 0.6rem;
-      color: #fff !important;
+      font-size: 1rem;
     }
   }
 
@@ -43,6 +46,7 @@
       padding: 10px;
       border-radius: 4px;
       margin-bottom: 1rem;
+      margin-top: 1rem;
 
       &[theme="dark"] {
         border: 1px solid #666;
@@ -82,12 +86,13 @@
               text-align: right;
             }
 
-            &:nth-child(2){
+            &:nth-child(2) {
               flex: 2;
             }
           }
         }
       }
+
       > tbody {
         width: 100%;
 
@@ -97,6 +102,7 @@
 
           &[theme="dark"] {
             border-bottom: 1px solid #999;
+
             &:hover {
               background: #333;
             }
@@ -104,6 +110,7 @@
 
           &[theme="light"] {
             border-bottom: 1px solid #ccc;
+
             &:hover {
               background: #ccc;
             }
@@ -122,7 +129,7 @@
               text-align: right;
             }
 
-            &:nth-child(2){
+            &:nth-child(2) {
               flex: 2;
             }
           }

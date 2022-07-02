@@ -11,7 +11,7 @@
   }
 
   &[theme="dark"] {
-    background: #775454;
+    background: #aa4444;
 
     * {
       color: #fff;
@@ -32,9 +32,17 @@
     padding: 1rem 4rem;
 
     > a {
+      display: flex;
+      align-items: center;
       text-decoration: none;
       font-size: 1.2rem;
       font-weight: bold;
+
+      > img {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-right: 1rem;
+      }
     }
 
     > button {

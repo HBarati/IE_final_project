@@ -5,36 +5,24 @@ import { getFetch } from '../../utils/fetch';
 import { useParams } from 'react-router-dom';
 import Layout from '../Layout';
 import './Detail.scss';
-import { nFormatter, numberWithCommas } from '../../utils/number';
+import { numberWithCommas } from '../../utils/number';
 
 const Detail = () => {
   const theme = useSelector((state) => state.theme.value);
   const { id } = useParams();
 
-  const { data: coin } = useQuery(['coin-detail', id], () =>
-    getFetch('https://api.coingecko.com/api/v3/coins/' + id)
-  );
+  const { data } = useQuery(['detail', id], () => getFetch('http://localhost:8080/detail/' + id));
 
   return (
     <Layout header>
       <div className="detail" theme={theme}>
-        {coin && (
+        {data && (
           <>
-            <img src={coin.image.large} alt={coin.name} />
-            <h1>{coin.name}</h1>
-            <div dangerouslySetInnerHTML={{ __html: coin.description.en }} />
+            <img src={data.image.large} alt={data.name} />
+            <h1>{data.name}</h1>
+            <div dangerouslySetInnerHTML={{ __html: data.description.en }} />
             <p>
-              Rank: <span>{coin.market_cap_rank}</span>
-            </p>
-            <p>
-              Current Price:{' '}
-              <span>$ {numberWithCommas(coin.market_data.current_price.usd.toFixed(0))}</span>
-            </p>
-            <p>
-              Market Cap:{' '}
-              <span>
-                $ {numberWithCommas(nFormatter(coin.market_data.market_cap.usd.toFixed(0)))}
-              </span>
+              Current Price: <span>$ {numberWithCommas(data.price.toFixed(0))}</span>
             </p>
           </>
         )}

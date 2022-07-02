@@ -4,6 +4,7 @@ import './Layout.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as themeAction from '../../store/theme';
+import logo from '../../assets/torob_logo.svg';
 
 const Layout = ({ children, header }) => {
   const theme = useSelector((state) => state.theme.value);
@@ -14,7 +15,10 @@ const Layout = ({ children, header }) => {
     <div className="layout" theme={theme}>
       {header && (
         <header theme={theme}>
-          <Link to="/">Torob Project</Link>
+          <Link to="/">
+            <img src={logo} alt="torob" />
+            Torob Project
+          </Link>
           <button onClick={toggle}>Change Theme</button>
         </header>
       )}

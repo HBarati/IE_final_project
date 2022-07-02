@@ -1,6 +1,6 @@
-import Home from './Home';
 import Search from './Search';
 import Detail from './Detail';
 import Login from './Login';
+import Category from './Category';
 
-export { Home, Search, Detail, Login };
+export { Search, Detail, Login, Category };
