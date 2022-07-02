@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { asyncMutate } = useMutation(() =>
+  const { mutateAsync } = useMutation(() =>
     postFetch('http://localhost:8080/login', { username, password })
   );
 
@@ -36,7 +36,7 @@ const Login = () => {
           <button
             theme={theme}
             onClick={async () => {
-              await asyncMutate();
+              await mutateAsync();
               navigate('/home');
             }}>
             Submit
