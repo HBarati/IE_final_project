@@ -20,6 +20,7 @@ const Layout = ({ children, header }) => {
             Torob Project
           </Link>
           <button onClick={toggle}>Change Theme</button>
+          <Link to="/">Logout</Link>
         </header>
       )}
       <div>{children}</div>
