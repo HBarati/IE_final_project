@@ -12,13 +12,13 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', router);
 
-router.route('/products/:name').get((request, response) => {
+router.route('/productsname/:name').get((request, response) => {
     Db.getProduct(request.params.name).then((data) => {
       response.json(data[0]);
     })
   })
 
-  router.route('/products/:type').get((request, response) => {
+  router.route('/productstype/:type').get((request, response) => {
     Db.getProductsbyType(request.params.type).then((data) => {
       response.json(data[0]);
     })
@@ -38,7 +38,7 @@ router.route('/faves').post((request, response) => {
   })
   router.route('/products').post((request, response) => {
     let  product = { ...request.body }
-    Db.addFave(product).then(data  => {
+    Db.addProduct(product).then(data  => {
       response.status(201).json(data);
     })
   })

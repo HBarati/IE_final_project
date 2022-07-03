@@ -33,7 +33,7 @@ async  function  addFave(fave) {
     let  insertFave = await  pool.request()
     .input('username', sql.NVarChar, fave.username)
     .input('proid', sql.NVarChar, fave.proid)
-    .execute('InsertFave');
+    .query("INSERT INTO favorits (username, proid) VALUES (@username, @proid)");
     return  insertFave.recordsets;
   }
   catch (err) {
@@ -48,7 +48,7 @@ async  function  addUser(user) {
     .input('username', sql.NVarChar, user.username)
     .input('password', sql.NVarChar, user.password)
     .input('logged', sql.Bit, user.logged)
-    .execute('InsertUser');
+    .query("INSERT INTO users (username, password, logged) VALUES (@username, @password, @logged)");
     return  insertUser.recordsets;
   }
   catch (err) {
@@ -65,7 +65,7 @@ async  function  addProduct(product) {
     .input('brand', sql.NVarChar, product.brand)
     .input('name', sql.NVarChar, product.name)
     .input('price', sql.Float, product.price)
-    .execute('InsertProduct');
+    .query("INSERT INTO products (proid, type, brand, name, price) VALUES (@proid, @type, @brand, @name, @price)");
     return  insertProduct.recordsets;
   }
   catch (err) {
