@@ -24,9 +24,21 @@ router.route('/productsname/:name').get((request, response) => {
     })
   })
 
+  router.route('/reports/:sellerid').get((request, response) => {
+    Db.getReport(request.params.sellerid).then((data) => {
+      response.json(data[0]);
+    })
+  })
+
 router.route('/users').post((request, response) => {
   let  user = { ...request.body }
   Db.addUser(user).then(data  => {
+    response.status(201).json(data);
+  })
+})
+router.route('/sellers').post((request, response) => {
+  let  seller = { ...request.body }
+  Db.addSeller(seller).then(data  => {
     response.status(201).json(data);
   })
 })
@@ -39,6 +51,19 @@ router.route('/faves').post((request, response) => {
   router.route('/products').post((request, response) => {
     let  product = { ...request.body }
     Db.addProduct(product).then(data  => {
+      response.status(201).json(data);
+    })
+  })
+  router.route('/reports').post((request, response) => {
+    let  report = { ...request.body }
+    Db.addReport(report).then(data  => {
+      response.status(201).json(data);
+    })
+  })
+
+  router.route('/sellers/:sellerid').put((request, response) => {
+    let  seller = { ...request.body }
+    Db.updateSeller(seller,request.params.sellerid).then(data  => {
       response.status(201).json(data);
     })
   })

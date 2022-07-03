@@ -26,6 +26,18 @@ async  function  getProductsbyType(productType) {
     console.log(error);
   }
 }
+async  function  getReport(sellerId) {
+  try {
+    let  pool = await  sql.connect(config);
+    let  report = await  pool.request()
+    .input('input_parameter', sql.NVarChar, sellerId)
+    .query("SELECT * from reports where sellerid = @input_parameter");
+    return  report.recordsets;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
 
 async  function  addFave(fave) {
   try {
@@ -41,6 +53,20 @@ async  function  addFave(fave) {
   }
 }
 
+async  function  addReport(report) {
+  try {
+    let  pool = await  sql.connect(config);
+    let  insertReport = await  pool.request()
+    .input('type', sql.NVarChar, report.type)
+    .input('sellerid', sql.NVarChar, report.sellerid)
+    .query("INSERT INTO reports (type, sellerid) VALUES (@type, @sellerid)");
+    return  insertReport.recordsets;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
 async  function  addUser(user) {
   try {
     let  pool = await  sql.connect(config);
@@ -50,6 +76,21 @@ async  function  addUser(user) {
     .input('logged', sql.Bit, user.logged)
     .query("INSERT INTO users (username, password, logged) VALUES (@username, @password, @logged)");
     return  insertUser.recordsets;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+async  function  addSeller(seller) {
+  try {
+    let  pool = await  sql.connect(config);
+    let  insertSeller = await  pool.request()
+    .input('phone', sql.NChar, seller.phone)
+    .input('email', sql.NVarChar, seller.email)
+    .input('name', sql.NVarChar, seller.name)
+    .query("INSERT INTO sellers (phone, email, name) VALUES (@phone, @email, @name)");
+    return  insertSeller.recordsets;
   }
   catch (err) {
     console.log(err);
@@ -72,6 +113,22 @@ async  function  addProduct(product) {
     console.log(err);
   }
 }
+async  function  updateSeller(seller,sellerid) {
+  try {
+    let  pool = await  sql.connect(config);
+    let  updateSeller = await  pool.request()
+    .input('phone', sql.NChar, seller.phone)
+    .input('email', sql.NVarChar, seller.email)
+    .input('name', sql.NVarChar, seller.name)
+    .input('sellerid', sql.Int, sellerid)
+    .query("UPDATE sellers SET  phone = @phone, email = @email, name = @name WHERE sellerid = @sellerid");
+    return  updateSeller.recordsets;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
 
 
 module.exports ={
@@ -79,5 +136,9 @@ module.exports ={
     addUser:  addUser,
     addFave: addFave,
     addProduct: addProduct,
-    getProductsbyType: getProductsbyType
+    getProductsbyType: getProductsbyType,
+    addReport: addReport,
+    getReport: getReport,
+    addSeller: addSeller,
+    updateSeller: updateSeller
 }
