@@ -56,9 +56,28 @@ async  function  addUser(user) {
   }
 }
 
+async  function  addProduct(product) {
+  try {
+    let  pool = await  sql.connect(config);
+    let  insertProduct = await  pool.request()
+    .input('proid', sql.Int, product.proid)
+    .input('type', sql.NVarChar, product.type)
+    .input('brand', sql.NVarChar, product.brand)
+    .input('name', sql.NVarChar, product.name)
+    .input('price', sql.Float, product.price)
+    .execute('InsertProduct');
+    return  insertProduct.recordsets;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+
 module.exports ={
     getProduct: getProduct,
     addUser:  addUser,
     addFave: addFave,
+    addProduct: addProduct,
     getProductsbyType: getProductsbyType
 }

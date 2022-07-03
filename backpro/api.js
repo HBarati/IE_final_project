@@ -36,7 +36,13 @@ router.route('/faves').post((request, response) => {
       response.status(201).json(data);
     })
   })
+  router.route('/products').post((request, response) => {
+    let  product = { ...request.body }
+    Db.addFave(product).then(data  => {
+      response.status(201).json(data);
+    })
+  })
 
-var port = 3000;
+var port = 3030;
 app.listen(port);
 
