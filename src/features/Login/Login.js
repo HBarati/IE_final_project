@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useMutation } from 'react-query';
+import visibilityIcon from '../../assets/visibility.svg';
+import visibilityOffIcon from '../../assets/visibility-off.svg';
 import { postFetch } from '../../utils/fetch';
 import Layout from '../Layout';
 import './Login.scss';
@@ -11,6 +13,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [visible, setVisible] = useState(false);
+
   const { mutateAsync } = useMutation(() =>
     postFetch('http://localhost:8080/login', { username, password })
   );
@@ -20,19 +24,28 @@ const Login = () => {
       <div className="login" theme={theme}>
         <div className="login-inner">
           <label htmlFor="username">Username:</label>
-          <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <div>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
           <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div>
+            <input
+              id="password"
+              type={visible ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <img
+              src={visible ? visibilityOffIcon : visibilityIcon}
+              alt=""
+              onClick={() => setVisible((prev) => !prev)}
+            />
+          </div>
           <button
             theme={theme}
             onClick={async () => {

@@ -15,14 +15,30 @@
     backdrop-filter: brightness(1.08);
     box-shadow: rgba(89, 96, 99, 0.2) 0 5px 5px;
 
-    > input {
+    > div {
       border: #777 solid 1px;
       border-radius: 5px;
       height: 45px;
       width: 250px;
-      padding: 5px;
       margin-bottom: 20px;
       color: #000 !important;
+      position: relative;
+
+      > img {
+        opacity: 50%;
+        cursor: pointer;
+        position: absolute;
+        right: 4px;
+        top: 0;
+        bottom: 0;
+        margin-bottom: auto;
+        margin-top: auto;
+      }
+
+      > input {
+        height: 100%;
+        width: 100%;
+      }
 
       &:last-child {
         margin-bottom: 30px;
